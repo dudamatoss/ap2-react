@@ -33,12 +33,27 @@ function RegistrationForm({ onCadastrar }) {
       return;
     }
 
+    const urlFoto = formulario.foto.trim();
+    const urlValida = /^https?:\/\/.+/i.test(urlFoto);
+
+    if (!urlValida) {
+      setErro('Use o link direto da imagem (começando com http:// ou https://).');
+      return;
+    }
+
+    if (/instagram\.com|facebook\.com|tiktok\.com/i.test(urlFoto)) {
+      setErro(
+        'Links de redes sociais não funcionam. Use o endereço direto do arquivo (.jpg, .png).',
+      );
+      return;
+    }
+
     const pessoa = {
       nome: formulario.nome.trim(),
       telefone: formulario.telefone.trim(),
       egressoConvidado: formulario.egressoConvidado,
       pago: formulario.pago,
-      foto: formulario.foto.trim(),
+      foto: urlFoto,
     };
 
     onCadastrar(pessoa);
@@ -123,7 +138,7 @@ function RegistrationForm({ onCadastrar }) {
             name="foto"
             value={formulario.foto}
             onChange={handleChange}
-            placeholder="URL da imagem"
+            placeholder="https://i.pravatar.cc/150"
           />
         </label>
 

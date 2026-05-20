@@ -5,7 +5,12 @@ function UserCard({ pessoa }) {
 
   return (
     <article className="card">
-      <img className="card-foto" src={pessoa.foto} alt={pessoa.nome} />
+      <img
+        className="card-foto"
+        src={pessoa.foto}
+        alt={pessoa.nome}
+        referrerPolicy="no-referrer"
+      />
       <h3 className="card-nome">{pessoa.nome}</h3>
       <p className="card-tipo">{tipo}</p>
       <p className="card-status">{status}</p>
