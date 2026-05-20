@@ -150,11 +150,15 @@
   color: #334155;
 }
 
-.formulario input[type='text'] {
+.formulario input:not([type='radio']) {
   padding: 0.5rem 0.65rem;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
   font-size: 0.9rem;
+  font-family: inherit;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .formulario fieldset {

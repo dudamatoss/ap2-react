@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import {
+  formatarTelefone,
+  telefoneValido,
+} from '../utils/formatarTelefone';
 
 const formularioInicial = {
   nome: '',
@@ -14,6 +18,12 @@ function RegistrationForm({ onCadastrar }) {
 
   function handleChange(evento) {
     const { name, value } = evento.target;
+
+    if (name === 'telefone') {
+      setFormulario({ ...formulario, telefone: formatarTelefone(value) });
+      return;
+    }
+
     setFormulario({ ...formulario, [name]: value });
   }
 
@@ -30,6 +40,11 @@ function RegistrationForm({ onCadastrar }) {
 
     if (camposVazios) {
       setErro('Preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    if (!telefoneValido(formulario.telefone)) {
+      setErro('Informe um telefone válido: (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX.');
       return;
     }
 
@@ -76,10 +91,12 @@ function RegistrationForm({ onCadastrar }) {
         <label>
           Telefone
           <input
-            type="text"
+            type="tel"
             name="telefone"
             value={formulario.telefone}
             onChange={handleChange}
+            placeholder="(51) 99999-9999"
+            maxLength={15}
           />
         </label>
 
