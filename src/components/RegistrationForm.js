@@ -111,6 +111,7 @@ function RegistrationForm({ onCadastrar }) {
 
   return (
     <aside className="formulario">
+      <h2 className="formulario-titulo">Cadastro</h2>
       <form onSubmit={handleSubmit} noValidate>
         <div className={`campo ${erros.nome ? 'campo--erro' : ''}`}>
           <label>

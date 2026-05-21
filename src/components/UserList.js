@@ -1,6 +1,14 @@
 import UserCard from './UserCard';
 
 function UserList({ pessoas }) {
+  if (pessoas.length === 0) {
+    return (
+      <p className="lista-vazia">
+        Nenhum convidado cadastrado ainda. Use o formulário ao lado.
+      </p>
+    );
+  }
+
   return (
     <section className="lista-pessoas">
       {pessoas.map((pessoa) => (
