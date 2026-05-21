@@ -141,6 +141,12 @@
   gap: 1rem;
 }
 
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .formulario label {
   display: flex;
   flex-direction: column;
@@ -183,10 +189,27 @@
   font-weight: 400;
 }
 
-.formulario-erro {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #dc2626;
+.campo--erro > label,
+.campo--erro legend {
+  color: #b91c1c;
+}
+
+.campo--erro input:not([type='radio']) {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.campo--erro fieldset {
+  padding: 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #ef4444;
+  background-color: #fef2f2;
+}
+
+.campo-alerta {
+  font-size: 0.8rem;
+  color: #b91c1c;
+  font-weight: 500;
 }
 
 .btn-cadastrar {
